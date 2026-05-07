@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: gais-server
+    env: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    autoDeploy: true
+    envVars:
+      - key: DATABASE_URL
+        sync: false
+      - key: RUN_MIGRATIONS_ON_STARTUP
+        value: "true"
+      - key: DEMO_USER_HANDLE
+        value: "user-1"
