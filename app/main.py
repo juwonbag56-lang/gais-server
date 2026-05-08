@@ -158,6 +158,10 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+# Routers
+from .routers.analyze_face import router as analyze_face_router  # noqa: E402
+app.include_router(analyze_face_router)
+
 
 # ---------------------------------------------------------------------------
 # Composition helpers (DB rows → API response shape)
